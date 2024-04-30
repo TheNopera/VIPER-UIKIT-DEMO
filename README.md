@@ -41,8 +41,3 @@ Contribuições são bem-vindas! Se você quiser contribuir para este projeto, s
 ## Autor
 
 [Daniel Ishida](https://github.com/TheNopera)
-
-## Licença
-
-Este projeto está licenciado sob a Licença MIT - consulte o arquivo [LICENSE](LICENSE) para obter detalhes.
-
