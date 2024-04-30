@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let router = TransactionRouter()
         let window = UIWindow(windowScene: windowScene)
         window.makeKeyAndVisible()
-        window.rootViewController = router.buildView()
+        window.rootViewController = router.view
         self.window = window
     }
 

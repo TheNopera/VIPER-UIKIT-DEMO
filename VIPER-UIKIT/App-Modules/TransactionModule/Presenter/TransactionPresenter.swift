@@ -14,9 +14,14 @@ protocol TransactionPresenterProtocol : AnyObject{
     
     var interactor : TransactionInteractorProtocol {get set}
     
+    //An array to keep our Transactions
     var transactionsList: [TransactionEntity] { get set}
     
-    func viewDidLoad()
+    //Function to get all transactions and put on the list
+    func getTransactions()
+    
+    //Open transaction details
+    func openDetails(fromID : UUID)
 }
 
 class TransactionPresenter{
@@ -34,20 +39,28 @@ class TransactionPresenter{
         self.router = router
         self.interactor = interactor
         
-        self.viewDidLoad()
+        self.getTransactions()
     }
 }
 
 
 extension TransactionPresenter : TransactionPresenterProtocol{
-    
+  
     //Fetches transactions and reloads the Table
-    func viewDidLoad() {
+    func getTransactions() {
         let transactions = interactor.fecthTransactions()
         transactionsList = transactions
         view?.reloadTableData()
     }
     
+    func openDetails(fromID : UUID){
+        guard let transaction = transactionsList.first(where: { $0.id == fromID }) else {
+               // If no transaction is found, handle the error gracefully
+               print("Transaction with ID \(fromID) not found")
+               return
+        }
+        router.routeFor(transaction: transaction)
+    }
     
     
 }

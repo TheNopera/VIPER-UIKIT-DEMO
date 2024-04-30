@@ -9,8 +9,10 @@ import Foundation
 import UIKit
 
 protocol TransactionViewProtocol : AnyObject{
+    //Makes sure the view can hold a Presenter reference
     var presenter : TransactionPresenterProtocol? { get set }
     
+    //Reloads the table in our view
     func reloadTableData()
 }
 
@@ -21,7 +23,6 @@ class TransactionView : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .brown
         self.setupTableView()
         
     }
@@ -65,7 +66,8 @@ extension TransactionView : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.viewDidLoad()
+        tableView.deselectRow(at: indexPath, animated: true)
+        presenter?.openDetails(fromID: presenter!.transactionsList[indexPath.row].id)
     }
     
 }
@@ -74,6 +76,5 @@ extension TransactionView : UITableViewDelegate, UITableViewDataSource{
 extension TransactionView : TransactionViewProtocol{
     func reloadTableData() {
         tableView.reloadData()
-        print("reloaded")
     }
 }
