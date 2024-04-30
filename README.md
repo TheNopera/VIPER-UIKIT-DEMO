@@ -1,6 +1,6 @@
 # VIPER Pattern Implementation with UIKit
 
-Este projeto é uma exploração da implementação do padrão VIPER (View, Interactor, Presenter, Entity, Router) utilizando UIKit, uma estrutura de interface de usuário amplamente utilizada para aplicativos iOS.
+Este projeto é uma demonstração da implementação do padrão VIPER (View, Interactor, Presenter, Entity, Router) utilizando UIKit, uma estrutura de interface de usuário amplamente utilizada para aplicativos iOS.
 
 ## Descrição
 
